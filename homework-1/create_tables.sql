@@ -1,9 +1,12 @@
+-- удаляем таблицы, если есть
+DROP TABLE IF EXISTS public.orders;
+DROP TABLE IF EXISTS public.customers;
+DROP TABLE IF EXISTS public.employees;
+
 -- SQL-команды для создания таблиц
 ------------------------------------------------
 -- Table: public.customers
 ------------------------------------------------
--- DROP TABLE IF EXISTS public.customers;
-
 CREATE TABLE IF NOT EXISTS public.customers
 (
     customer_id character(5) COLLATE pg_catalog."default" NOT NULL,
@@ -18,7 +21,7 @@ ALTER TABLE IF EXISTS public.customers
     OWNER to postgres;
 -- Index: ix_customers
 
--- DROP INDEX IF EXISTS public.ix_customers;
+--DROP INDEX IF EXISTS public.ix_customers;
 
 CREATE UNIQUE INDEX IF NOT EXISTS ix_customers
     ON public.customers USING btree
@@ -31,8 +34,6 @@ ALTER TABLE IF EXISTS public.customers
 ------------------------------------------------
 -- Table: public.employees
 ------------------------------------------------
--- DROP TABLE IF EXISTS public.employees;
-
 CREATE TABLE IF NOT EXISTS public.employees
 (
     employee_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
@@ -63,8 +64,6 @@ ALTER TABLE IF EXISTS public.employees
 ------------------------------------------------
 -- Table: public.orders
 ------------------------------------------------
--- DROP TABLE IF EXISTS public.orders;
-
 CREATE TABLE IF NOT EXISTS public.orders
 (
     order_id integer NOT NULL,
